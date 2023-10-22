@@ -1,5 +1,5 @@
 # WestermannWebcodeHelper
-Alpha-Version eines (privaten) 🛠 Tools, dass über Webcodes bei Westermann die zugehörigen Materialien 🔽 herunterlädt.
+Alpha-Version eines (privaten) 🛠 Tools, das über Webcodes bei Westermann die zugehörigen Materialien 🔽 herunterlädt.
 
 ## Das Tool für den Download der Webressourcen über einen Webcode
 
