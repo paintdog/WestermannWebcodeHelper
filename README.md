@@ -6,6 +6,8 @@ Alpha-Version eines (privaten) 🛠 Tools, das über Webcodes bei Westermann die
 Das Tool benötigt die Module [requests](https://pypi.org/project/requests/) und [beautifulsoup4](https://pypi.org/project/beautifulsoup4/).
 
 ```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 from bs4 import BeautifulSoup
 import requests
 
@@ -25,9 +27,16 @@ def download(webcode):
     for link in links:
         if "backend" in link["href"]:
             ressource = "https://www.westermann.de" + link["href"]
+    description = soup.find("div", {"class": "buchlink"}).p.get_text(strip=True)
+    description = description.replace("?"," ").replace(":",";").replace("/","-")
+    description = description.replace("Baustein","BS")
+    description = description.replace("Arbeitsblätter","AB")
+    description = description.replace("Arbeitsblatt","AB")
+    description = description.replace("Zusatzmaterial","ZM")
+    print(description)
     # Die Seite mit der Ressource aufrufen, die Ressource herunterladen
     web = requests.get(ressource, allow_redirects=True)
-    with open(f"{webcode}.doc", "wb") as f:
+    with open(f"{description} [{webcode}].doc", "wb") as f:
         f.write(web.content)
 
 def main():
