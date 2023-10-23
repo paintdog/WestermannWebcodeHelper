@@ -78,6 +78,16 @@ webcodes = ['SNG-22788-999', 'SNG-22788-990', 'SNG-22788-909', 'SNG-22788-100', 
             'SNG-22788-099']
 ```
 
+## Changelog
+
+### [0.2.0] - 2023-03-23
+#### Changed 
+- Die Funktion download() erfasst jetzt auch die Beschreibung („buchlink“) bei Westermann und nutzt es für den Dateinamen.
+
+### [0.1.0] - 2023-03-22
+#### Added
+- download()-Funktion ermöglicht den Download einer Webressource über eine Signatur.
+
 ## Möglichkeiten zur Mitarbeit 
 
 Ein GUI für das Tool könnte technisch weniger versierten Nutzerinnen und Nutzern helfen.
