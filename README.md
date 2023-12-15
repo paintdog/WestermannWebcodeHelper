@@ -76,9 +76,9 @@ print(result)
 ### EinFach Deutsch, Unterrichtsmodell, Materialgestütztes Schreiben (2021)
 
 ```python
-webcodes = ['SNG-22711-191', 'SNG-22711-282', 'SNG-22711-464', 'SNG-22711-373', 'SNG-22711-000', 'SNG-22711-222',
-            'SNG-22711-919', 'SNG-22711-828', 'SNG-22711-737', 'SNG-22711-646', 'SNG-22711-535', 'SNG-22711-424', 
-            'SNG-22711-515', 'SNG-22711-313', 'SNG-22711-202', 'SNG-22711-909', 'SNG-22711-111', 'SNG-22711-311']
+webcodes = ['SNG-22771-191', 'SNG-22771-282', 'SNG-22771-464', 'SNG-22771-373', 'SNG-22771-000', 'SNG-22771-222',
+            'SNG-22771-919', 'SNG-22771-828', 'SNG-22771-737', 'SNG-22771-646', 'SNG-22771-535', 'SNG-22771-424', 
+            'SNG-22771-515', 'SNG-22771-313', 'SNG-22771-202', 'SNG-22771-909', 'SNG-22771-111', 'SNG-22771-311']
 ```
 
 ### EinFach Deutsch, Unterrichtsmodell, Sprache und Kommunikation im öffentlichen Raum … ohne Rassismus und Diskriminierung (2022)
