@@ -4,6 +4,25 @@ from bs4 import BeautifulSoup
 import requests
 
 
+# https://www.westermann.de/backend/buchlink/aufrufen/978-3-14-109677-4/1000324819
+# https://www.westermann.de/backend/buchlink/aufrufen/978-3-14-109677-4/1000324820
+
+URL = "https://www.westermann.de"
+
+
+def beautify(description):
+    description = description.replace("?"," ").replace(":",";").replace("/","-")
+    description = description.replace("Baustein","BS")
+    description = description.replace("Arbeitsblätter","AB")
+    description = description.replace("Arbeitsblatt","AB")
+    description = description.replace("Zusatzmaterial","ZM")
+    return description
+
+
+def build(url):
+    return URL + str(url)
+
+
 def download(webcode):
     url = "https://www.westermann.de/webcode"
     payload = {'webcode': webcode}
@@ -11,37 +30,53 @@ def download(webcode):
     web = requests.post(url, data=payload, allow_redirects=False)
     location = web.headers['Location']
     zieladresse = "https://www.westermann.de" + location
-    # Die Zielseite aufrufen und den Link auf die Webressource erfragen
+    # Die Zielseite aufrufen und als soup bereitstellen
     web = requests.get(zieladresse)
     soup = BeautifulSoup(web.text, "html5lib")
-    links = soup.find_all("a")
-    ressource = ""
-    for link in links:
-        if "backend" in link["href"]:
-            ressource = "https://www.westermann.de" + link["href"]
-    description = soup.find("div", {"class": "buchlink"}).p.get_text(strip=True)
-    description = description.replace("?"," ").replace(":",";").replace("/","-")
-    description = description.replace("Baustein","BS")
-    description = description.replace("Arbeitsblätter","AB")
-    description = description.replace("Arbeitsblatt","AB")
-    description = description.replace("Zusatzmaterial","ZM")
-    print(description)
-    # Die Seite mit der Ressource aufrufen, die Ressource herunterladen
-    web = requests.get(ressource, allow_redirects=True)
-    with open(f"{description} [{webcode}].doc", "wb") as f:
-        f.write(web.content)
+
+    # Die Buchlinks abrufen und bereitstellen
+    buchlinks = soup.find_all("div", attrs={"class" : "buchlink"})
+    
+    # Wir arbeiten jetzt die Buchlinks ab
+    description = None
+    link        = None
+    for buchlink in buchlinks:
+        p_items = buchlink.find_all("p")
+        for p_item in p_items:
+            if p_item.find("a"):
+                link_element = build(p_item.find("a")["href"])
+                print("URL!", link_element)
+                web = requests.get(link_element, allow_redirects=True)
+                if "Word" in p_item.find("a").text:
+                    with open(f"{description} [{webcode}].doc", "wb") as f:
+                        f.write(web.content)
+                    flag = False
+                elif "PDF" in p_item.find("a").text:
+                    with open(f"{description} [{webcode}].pdf", "wb") as f:
+                        f.write(web.content)
+                else:
+                    print("")
+                    print("ERROR - unbekannter Dateityp.")
+                    print(p_item.text)
+                    print("")
+            else:
+                description = beautify(p_item.get_text(strip=True))
+                print(description)
+        # input(">>>")
+
 
 def main():
     # Sprache und Kommunikation im öffentlichen Raum (2022)
-    webcodes = ['SNG-22788-999', 'SNG-22788-990', 'SNG-22788-909', 'SNG-22788-100', 'SNG-22788-111', 'SNG-22788-110',
-                'SNG-22788-101', 'SNG-22788-001', 'SNG-22788-011', 'SNG-22788-008', 'SNG-22788-800', 'SNG-22788-088',
-                'SNG-22788-888', 'SNG-22788-808', 'SNG-22788-880', 'SNG-22788-222', 'SNG-22788-900', 'SNG-22788-202',
-                'SNG-22788-022', 'SNG-22788-220', 'SNG-22788-444', 'SNG-22788-400', 'SNG-22788-404', 'SNG-22788-044',
-                'SNG-22788-440', 'SNG-22788-333', 'SNG-22788-300', 'SNG-22788-303', 'SNG-22788-330', 'SNG-22788-033',
-                'SNG-22788-030', 'SNG-22788-555', 'SNG-22788-666', 'SNG-22788-600', 'SNG-22788-606', 'SNG-22788-660',
-                'SNG-22788-066', 'SNG-22788-060', 'SNG-22788-777', 'SNG-22788-700', 'SNG-22788-750', 'SNG-22788-850',
-                'SNG-22788-150', 'SNG-22788-002', 'SNG-22788-500', 'SNG-22788-000', 'SNG-22788-090', 'SNG-22788-009',
-                'SNG-22788-099']
+    webcodes = ['WES-109677-636', 'WES-109677-282', 'WES-109677-885', 'WES-109677-705', 'WES-109677-204',
+                'WES-109677-513', 'WES-109677-401', 'WES-109677-962', 'WES-109677-166', 'WES-109677-311',
+                'WES-109677-667', 'WES-109677-722', 'WES-109677-827', 'WES-109677-771', 'WES-109677-999',
+                'WES-109677-440', 'WES-109677-337', 'WES-109677-187', 'WES-109677-855', 'WES-109677-617',
+                'WES-109677-222', 'WES-109677-079', 'WES-109677-483', 'WES-109677-323', 'WES-109677-599',
+                'WES-109677-911', 'WES-109677-798', 'WES-109677-266', 'WES-109677-199', 'WES-109677-652',
+                'WES-109677-067', 'WES-109677-554', 'WES-109677-681', 'WES-109677-491', 'WES-109677-384',
+                'WES-109677-142', 'WES-109677-952', 'WES-109677-777', 'WES-109677-755', 'WES-109677-110',
+                'WES-109677-255']
+    # webcodes = ['WES-109677-999']
     for webcode in webcodes:
         download(webcode)
 
