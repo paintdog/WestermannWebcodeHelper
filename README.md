@@ -33,6 +33,20 @@ print(result)
 ```
 ## Webcode-Listen für einzelne Veröffentlichungen des Verlags
 
+### EinFach Deutsch, Unterrichtsmodell, Jenny Erpenbeck: Heimsuchung (2024)
+
+```python
+webcodes = ['WES-109677-636', 'WES-109677-282', 'WES-109677-885', 'WES-109677-705', 'WES-109677-204',
+            'WES-109677-513', 'WES-109677-401', 'WES-109677-962', 'WES-109677-166', 'WES-109677-311',
+            'WES-109677-667', 'WES-109677-722', 'WES-109677-827', 'WES-109677-771', 'WES-109677-999',
+            'WES-109677-440', 'WES-109677-337', 'WES-109677-187', 'WES-109677-855', 'WES-109677-617',
+            'WES-109677-222', 'WES-109677-079', 'WES-109677-483', 'WES-109677-323', 'WES-109677-599',
+            'WES-109677-911', 'WES-109677-798', 'WES-109677-266', 'WES-109677-199', 'WES-109677-652',
+            'WES-109677-067', 'WES-109677-554', 'WES-109677-681', 'WES-109677-491', 'WES-109677-384',
+            'WES-109677-142', 'WES-109677-952', 'WES-109677-777', 'WES-109677-755', 'WES-109677-110',
+            'WES-109677-255']
+```
+
 ### EinFach Deutsch, Unterrichtsmodell, Materialgestütztes Schreiben (2021)
 
 ```python
