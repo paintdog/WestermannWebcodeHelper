@@ -47,6 +47,17 @@ webcodes = ['WES-109677-636', 'WES-109677-282', 'WES-109677-885', 'WES-109677-70
             'WES-109677-255']
 ```
 
+### EinFach Deutsch, Unterrichtsmodell, Heinrich von Kleist: Der zerbrochene Krug (o. J.)
+
+```python
+webcodes = ['WES-109676-572', 'WES-109676-068', 'WES-109676-915', 'WES-109676-627', 'WES-109676-209',
+            'WES-109676-781', 'WES-109676-436', 'WES-109676-113', 'WES-109676-858', 'WES-109676-392',
+            'WES-109676-705', 'WES-109676-547', 'WES-109676-263', 'WES-109676-974', 'WES-109676-689',
+            'WES-109676-051', 'WES-109676-167', 'WES-109676-335', 'WES-109676-409', 'WES-109676-777',
+            'WES-109676-826', 'WES-109676-238', 'WES-109676-569', 'WES-109676-376', 'WES-109676-642',
+            'WES-109676-198', 'WES-109676-485', 'WES-109676-303', 'WES-109676-449', 'WES-109676-862']
+```
+
 ### EinFach Deutsch, Unterrichtsmodell, Materialgestütztes Schreiben (2021)
 
 ```python
